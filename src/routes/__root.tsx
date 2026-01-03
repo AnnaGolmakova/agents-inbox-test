@@ -24,7 +24,7 @@ function RootComponent() {
       <head>
         <HydrationScript />
       </head>
-      <body>
+      <body class="bg-page text-secondary">
         <HeadContent />
         <Suspense>
           <Outlet />

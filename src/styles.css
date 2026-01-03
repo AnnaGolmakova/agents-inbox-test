@@ -1,15 +1,38 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-grey-94: #f0ede8;
+  --color-grey-90: #e5e1da;
+  --color-grey-87: #dedad3;
+  --color-beige-80: #ccc6bc;
+  --color-grey-61: #9c968c;
+  --color-grey-55: #8c867b;
+  --color-grey-47: #777269;
+  --color-grey-16: #29251f;
+  --color-orange-flash: #e96429;
+  --color-orange-dark: #c4512d;
+  --color-orange-light: #f9dece;
+  --color-lavender-dark: #5f549c;
+  --color-lavender-medium: #9387d2;
+  --color-lavender-light: #e6e2fb;
+  --color-green-dark: #3f6f55;
+  --color-green-light: #c2e1d1;
+
+  --color-page: var(--color-grey-94);
+  --color-primary: var(--color-grey-16);
+  --color-secondary: oklch(from var(--color-grey-16) l c h / 50%);
+}
 
 body {
   @apply m-0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
