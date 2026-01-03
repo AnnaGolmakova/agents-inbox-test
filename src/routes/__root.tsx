@@ -9,11 +9,15 @@ import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
 import { HydrationScript } from 'solid-js/web'
 import { Suspense } from 'solid-js'
 
+import fontCss from 'beepsans/beep.css?url'
 import styleCss from '../styles.css?url'
 
 export const Route = createRootRouteWithContext()({
   head: () => ({
-    links: [{ rel: 'stylesheet', href: styleCss }],
+    links: [
+      { rel: 'stylesheet', href: fontCss },
+      { rel: 'stylesheet', href: styleCss },
+    ],
   }),
   shellComponent: RootComponent,
 })
