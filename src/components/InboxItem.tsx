@@ -49,7 +49,8 @@ const InboxItem: Component<InboxItemProps> = (props) => {
 
   return (
     <div
-      class="flex cursor-pointer items-start gap-3 rounded-xl bg-white p-3 shadow-sm"
+      class="flex h-14 cursor-pointer items-start gap-3 overflow-hidden rounded-xl bg-white p-3 shadow-sm hover:h-max has-focus:h-max"
+      style="interpolate-size: allow-keywords; transition: height ease-out 0.25s 0.1s;"
       onClick={() => props.onClick?.()}
     >
       <div class="h-8 w-8 shrink-0 overflow-hidden rounded-lg inset-shadow-2xs/50">

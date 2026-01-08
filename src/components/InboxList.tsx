@@ -11,18 +11,24 @@ interface InboxListProps {
 
 const InboxList: Component<InboxListProps> = (props) => {
   return (
-    <div class="flex w-full max-w-3xl min-w-xs grow flex-col gap-3 overflow-hidden px-6">
+    <div class="flex w-full max-w-3xl min-w-xs grow flex-col px-6 pb-24">
       <For each={props.items}>
         {(item) => (
-          <InboxItem
-            item={item}
-            onClick={() => props.onItemClick?.(item)}
-            isExpanded={Math.random() > 0.5}
-            actions={[
-              { label: 'Approve Contract', isPrimary: true, onClick: () => {} },
-              { label: 'Find alternatives', onClick: () => {} },
-            ]}
-          />
+          <div class="mb-3">
+            <InboxItem
+              item={item}
+              onClick={() => props.onItemClick?.(item)}
+              isExpanded={true}
+              actions={[
+                {
+                  label: 'Approve Contract',
+                  isPrimary: true,
+                  onClick: () => {},
+                },
+                { label: 'Find alternatives', onClick: () => {} },
+              ]}
+            />
+          </div>
         )}
       </For>
     </div>
