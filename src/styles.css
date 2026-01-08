@@ -23,6 +23,16 @@
   --color-secondary: oklch(from var(--color-grey-16) l c h / 50%);
 }
 
+@layer utilities {
+  .rounded,
+  .rounded-sm,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl {
+    corner-shape: superellipse(1.2);
+  }
+}
+
 body {
   @apply m-0;
   font-family:
