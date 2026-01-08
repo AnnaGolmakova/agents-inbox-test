@@ -122,7 +122,7 @@ const EtherealTorus = () => {
       const deltaTime = currentTime - lastFrameTime
 
       if (deltaTime >= frameInterval && ctx && canvas) {
-        ctx.fillStyle = 'rgba(240, 238, 230, 0.03)'
+        ctx.fillStyle = 'rgba(240, 237, 232, 0.30)'
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         time += 0.004
