@@ -12,6 +12,8 @@ import { Suspense } from 'solid-js'
 import fontCss from 'beepsans/beep.css?url'
 import styleCss from '../styles.css?url'
 
+import { Navigation } from '../components/Navigation'
+
 export const Route = createRootRouteWithContext()({
   head: () => ({
     links: [
@@ -31,7 +33,12 @@ function RootComponent() {
       <body class="bg-page text-secondary">
         <HeadContent />
         <Suspense>
-          <Outlet />
+          <div class="flex min-h-screen">
+            <Navigation />
+            <main class="ml-16 flex-1 p-8">
+              <Outlet />
+            </main>
+          </div>
           <TanStackRouterDevtools />
         </Suspense>
         <Scripts />
