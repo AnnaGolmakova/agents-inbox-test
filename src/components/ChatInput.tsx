@@ -1,7 +1,7 @@
-import { createSignal, createUniqueId, Show, For } from 'solid-js'
 import ArrowUp from 'lucide-solid/icons/arrow-up'
 import Mic from 'lucide-solid/icons/mic'
 import Plus from 'lucide-solid/icons/plus'
+import { createSignal, createUniqueId, Show } from 'solid-js'
 import type { Component } from 'solid-js'
 
 interface ChatAction {
