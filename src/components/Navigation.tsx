@@ -1,12 +1,10 @@
-import {
-  Bell,
-  CalendarDays,
-  ChartColumnBig,
-  Layers,
-  Settings,
-  Sun,
-  User,
-} from 'lucide-solid'
+import Bell from 'lucide-solid/icons/bell'
+import CalendarDays from 'lucide-solid/icons/calendar-days'
+import ChartColumnBig from 'lucide-solid/icons/chart-column-big'
+import Layers from 'lucide-solid/icons/layers'
+import Settings from 'lucide-solid/icons/settings'
+import Sun from 'lucide-solid/icons/sun'
+import User from 'lucide-solid/icons/user'
 import { NavButton } from './NavButton'
 
 export function Navigation() {
