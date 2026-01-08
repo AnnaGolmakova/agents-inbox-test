@@ -53,7 +53,7 @@ const InboxItem: Component<InboxItemProps> = (props) => {
   return (
     <div
       ref={itemRef}
-      class="flex h-14 cursor-pointer items-start gap-3 overflow-hidden rounded-xl bg-white p-3 shadow-sm group-hover:h-max has-focus:h-max"
+      class="flex h-14 cursor-pointer items-start gap-3 overflow-hidden rounded-xl bg-white p-3 shadow-sm group-hover:h-max group-data-[open=true]:h-max has-focus:h-max"
       style="interpolate-size: allow-keywords; transition: height ease-out 0.25s 0.1s;"
       onClick={() => props.onClick?.()}
     >
@@ -93,7 +93,7 @@ const InboxItem: Component<InboxItemProps> = (props) => {
               <For each={props.actions}>
                 {(item) => (
                   <button
-                    class="mt-2 h-6 rounded-md px-4 text-[11px] transition-colors"
+                    class="focus-within:outline-orange-flash mt-2 h-6 rounded-md px-4 text-[11px] transition-colors focus-within:outline-2 focus-within:outline-offset-1"
                     classList={{
                       'bg-white text-primary font-medium border border-grey-87 hover:bg-grey-94':
                         !item.isPrimary,
