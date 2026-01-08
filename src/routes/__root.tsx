@@ -4,7 +4,7 @@ import {
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
+// import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
 
 import { HydrationScript } from 'solid-js/web'
 import { Suspense } from 'solid-js'
@@ -41,7 +41,7 @@ function RootComponent() {
               <Outlet />
             </main>
           </div>
-          <TanStackRouterDevtools />
+          {/*<TanStackRouterDevtools />*/}
         </Suspense>
         <Scripts />
       </body>
