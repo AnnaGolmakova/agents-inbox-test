@@ -1,13 +1,13 @@
 import { createFileRoute } from '@tanstack/solid-router'
-import EtherealTorus from '../components/EtherealTorus'
+import InboxList from '../components/InboxList'
+import { mockInboxItems } from '../mock/inboxItems'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
     <>
-      <EtherealTorus />
-      <h1>Hello world!</h1>
+      <InboxList items={mockInboxItems} />
     </>
   )
 }

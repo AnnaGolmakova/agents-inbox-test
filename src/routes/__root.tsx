@@ -35,7 +35,7 @@ function RootComponent() {
         <Suspense>
           <div class="flex min-h-screen">
             <Navigation />
-            <main class="ml-16 flex-1 p-8">
+            <main class="ml-16 flex grow flex-col items-center justify-center overflow-y-scroll p-8">
               <Outlet />
             </main>
           </div>
