@@ -1,6 +1,7 @@
 import { For, Show } from 'solid-js'
 import { formatTimeAgo } from '../lib/time'
 import Badge from './Badge'
+import { getDissolveFilter } from './DissolveFilter'
 
 import type { Component } from 'solid-js'
 import type { InboxItemType } from '../types/inbox'
@@ -19,6 +20,8 @@ interface InboxItemAction {
 }
 
 const InboxItem: Component<InboxItemProps> = (props) => {
+  let itemRef!: HTMLDivElement
+
   const getPriorityBadge = () => {
     switch (props.item.priority) {
       case 'urgent':
@@ -49,7 +52,8 @@ const InboxItem: Component<InboxItemProps> = (props) => {
 
   return (
     <div
-      class="flex h-14 cursor-pointer items-start gap-3 overflow-hidden rounded-xl bg-white p-3 shadow-sm hover:h-max has-focus:h-max"
+      ref={itemRef}
+      class="flex h-14 cursor-pointer items-start gap-3 overflow-hidden rounded-xl bg-white p-3 shadow-sm group-hover:h-max has-focus:h-max"
       style="interpolate-size: allow-keywords; transition: height ease-out 0.25s 0.1s;"
       onClick={() => props.onClick?.()}
     >
@@ -91,12 +95,25 @@ const InboxItem: Component<InboxItemProps> = (props) => {
                   <button
                     class="mt-2 h-6 rounded-md px-4 text-[11px] transition-colors"
                     classList={{
-                      'bg-white text-primary font-medium border border-grey-87':
+                      'bg-white text-primary font-medium border border-grey-87 hover:bg-grey-94':
                         !item.isPrimary,
-                      'bg-orange-flash text-white font-semibold':
+                      'bg-orange-flash text-white font-semibold hover:bg-orange-dark':
                         item.isPrimary,
                     }}
-                    onClick={() => item.onClick()}
+                    onClick={() => {
+                      if (item.isPrimary) {
+                        const dissolveFilter = getDissolveFilter()
+                        if (dissolveFilter) {
+                          dissolveFilter.dissolve(itemRef, () => {
+                            item.onClick()
+                          })
+                        } else {
+                          item.onClick()
+                        }
+                      } else {
+                        item.onClick()
+                      }
+                    }}
                   >
                     {item.label}
                   </button>

@@ -13,6 +13,7 @@ import fontCss from 'beepsans/beep.css?url'
 import styleCss from '../styles.css?url'
 
 import { Navigation } from '../components/Navigation'
+import DissolveFilter from '../components/DissolveFilter'
 
 export const Route = createRootRouteWithContext()({
   head: () => ({
@@ -32,6 +33,7 @@ function RootComponent() {
       </head>
       <body class="bg-page text-secondary">
         <HeadContent />
+        <DissolveFilter />
         <Suspense>
           <div class="flex min-h-screen">
             <Navigation />
