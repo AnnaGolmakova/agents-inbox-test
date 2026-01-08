@@ -9,6 +9,7 @@ import type { InboxItemType } from '../types/inbox'
 interface InboxListProps {
   items: Array<InboxItemType>
   onItemClick?: (item: InboxItemType) => void
+  onDeleteItem?: (itemId: string) => void
 }
 
 const InboxList: Component<InboxListProps> = (props) => {
@@ -110,7 +111,9 @@ const InboxList: Component<InboxListProps> = (props) => {
                         {
                           label: 'Approve Contract',
                           isPrimary: true,
-                          onClick: () => {},
+                          onClick: () => {
+                            props.onDeleteItem?.(item.id)
+                          },
                         },
                         { label: 'Find alternatives', onClick: () => {} },
                       ]}
