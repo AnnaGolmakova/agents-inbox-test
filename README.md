@@ -1,139 +1,74 @@
-Welcome to your new TanStack app! 
+# AI Agents Inbox
 
-# Getting Started
+A beautiful, interactive inbox interface for managing AI agent requests with fluid animations and keyboard navigation. Built with Solid.js, TanStack Router, and Tailwind CSS.
 
-To run this application:
+## About This Project
+
+ This project showcases an inbox where AI agents await your decisions, featuring smooth expand/collapse animations, keyboard navigation, and a fun dissolve effect when approving items.
+
+- Two-tabs: "Needs You" (active items) and "AI Handling" (handled items)
+- Expand/collapse animations
+- Navigate with `J` (down) and `K` (up) keys, with scroll following selection
+- Following WCAG accessibility practices
+- Dissolve effect: Items dissolve with a SVG filter effect when approved ( Safari not supported due to filter limitations)
+- Design tokens from Figma to Tailwind for consistent styling
+- iOS-style rounded corners: Using `corner-shape` CSS property for smooth, modern corners
+
+## Installation & Running
+
+[Bun](https://bun.sh/) installed
 
 ```bash
 bun install
-bun --bun run start
+bun run start
 ```
 
-# Building For Production
-
-To build this application for production:
+### Building For Production
 
 ```bash
+# Building For Production
 bun --bun run build
 ```
 
-## Styling
+## Tech Stack
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+- **Solid.js**: Reactive UI framework
+- **TanStack Router**: File-based routing
+- **Tailwind CSS**: Utility-first styling
+- **TypeScript**: Type safety
 
+## Implementation Details
 
+### 1. Dissolve Effect
+The most distinctive feature is the dissolve animation when approving items. This uses a chain of SVG filters applied sequentially:
 
-## Routing
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
+- Turbulence filter creates the organic dissolve pattern
+- Displacement map creates the distortion effect
+- Filters are composed to create the final disappearing animation
+- Implementation inspired by existing effects but recreated from scratch
 
-### Adding A Route
+### 2. Design System Integration
+- Converted Figma design tokens directly to Tailwind configuration
+- Custom utility for `corner-shape` CSS property (cutting-edge, not yet fully supported)
+- Automatically applies iOS-style smooth rounded corners throughout the app
 
-To add a new route to your application just add another a new file in the `./src/routes` directory.
+### 3. Keyboard Navigation
+- `J` key: Move down
+- `K` key: Move up  
+- `Escape`: Clear selection
+- Auto-scroll follows the selected item
 
-TanStack will automatically generate the content of the route file for you.
+## Initial Challenge
 
-Now that you have two routes you can use a `Link` component to navigate between them.
+The most difficult aspect was simulating the interaction model of AI agents and token streaming without implementing a full backend. I explored several approaches but prioritized frontend polish given the time constraint.
 
-### Adding Links
+What I Deprioritized
+- Backend/API integration (mocked data instead)
+- Cross-browser compatibility (dissolve effect Safari limitation)
+- Advanced agent simulation logic
 
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/solid-router`.
-
-```tsx
-import { Link } from "@tanstack/solid-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/solid/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { Outlet, createRootRoute } from '@tanstack/solid-router'
-import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools'
-
-import { Link } from "@tanstack/solid-router";
-
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
-```
-
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/solid/guide/routing-concepts#layouts).
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-const peopleRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/people",
-  loader: async () => {
-    const response = await fetch("https://swapi.dev/api/people");
-    return response.json() as Promise<{
-      results: {
-        name: string;
-      }[];
-    }>;
-  },
-  component: () => {
-    const data = peopleRoute.useLoaderData();
-    return (
-      <ul>
-        {data.results.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    );
-  },
-});
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/solid/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-
-## Linting & Formatting
-
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
-
-```bash
-bun --bun run lint
-bun --bun run format
-bun --bun run check
-```
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+Solid.js learnings coming from React/Svelte
+- Reactivity without virtual DOM overhead like in Svelte
+- Minimal runtime, compiled away reactivity
+- Familiar JSX: easy transition from React
+- Learning curve for new patterns
